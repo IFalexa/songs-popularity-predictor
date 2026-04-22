@@ -75,37 +75,38 @@ Outperformed simpler models (Linear Regression, Decision Tree) in cross-validati
 Model Performance
 
 
-R² Score: 0.3025
+R² Score: 0.325
 
 
-MAE: 9.89
+MAE: 9.74
 
 
-RMSE: 12.24
+RMSE: 12.04
 
 
-Interpretation: The model explains 30% of popularity variance, with predictions averaging ±10 points error.
+Interpretation: The model explains 32.5% of popularity variance, with predictions averaging ±10 points error. RMSE > MAE indicates presence of prediction outliers - some songs with average features became viral hits, while others with strong features underperformed.
 Feature Importance (Top 10)
 
 
-Year (0.1450) - Release year is the strongest predictor
-Genre (dutch indie) (0.1067) - Niche genres show distinct patterns
-Length (Duration) (0.0993) - Song duration impacts listener engagement
-Loudness (dB) (0.0841) - Louder songs tend to be more popular
-Danceability (0.0756) - Dance-friendly tracks have higher appeal
-Liveness (0.0744) - Live recording characteristics
-BPM (0.0681) - Tempo influences energy perception
-Valence (0.0601) - Musical positiveness affects mood
-Title Length (0.0594) - Shorter titles often more memorable
-Acousticness (0.0554) - Acoustic elements in production
+Year (11.8%) - Temporal trends and streaming era effects
+Length/Duration (9.0%) - Shorter songs preferred in streaming era
+Genre: Dutch Indie (8.5%) - Regional bias indicator
+Danceability (7.5%) - Rhythm and groove importance
+Liveness (7.5%) - Live performance presence
+Loudness (7.4%) - Production quality indicator
+BPM (7.1%) - Tempo impact
+Valence (6.6%) - Emotional positivity
+Title Length (6.6%) - Memorability factor
+Energy (6.2%) - Song energy level
 
 
 Key Insights:
 
 
-Release year is the strongest predictor (14.5% importance)
+Release year is the strongest predictor (11.8% importance)
 Genre plays significant role, especially niche genres
-Audio features (Loudness, Danceability, BPM) collectively drive popularity
+Audio features (Danceability, Loudness, BPM) collectively drive popularity
+Duration optimization: shorter songs preferred in streaming era
 Streamlit Application
 
 
@@ -194,7 +195,7 @@ Does not include lyrics or music video features
 Model Limitations:
 
 
-R² of 0.30 indicates significant unexplained variance
+R² of 0.325 indicates significant unexplained variance
 Cannot capture viral/meme-driven popularity
 Regional popularity differences not considered
 Artist reputation and marketing budget not factored
