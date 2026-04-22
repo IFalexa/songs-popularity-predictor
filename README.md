@@ -9,42 +9,41 @@ Project Overview
 
 
 This project addresses a critical challenge in the music industry: record labels and independent artists invest substantial resources in music production yet lack data-driven indicators of popularity potential. The solution helps music creators make informed decisions during the production phase by predicting popularity scores and identifying optimization opportunities before release.
+
 Target Users
+1.Independent music producers seeking data-driven guidance for creative direction
+2.A&R departments responsible for talent scouting and signing decisions
+3.Music marketing teams developing promotional strategies
 
-
-Independent music producers seeking data-driven guidance for creative direction
-A&R departments responsible for talent scouting and signing decisions
-Music marketing teams developing promotional strategies
 Core Features
-
-
-Real-time popularity prediction based on audio features
-SHAP-based feature attribution explaining prediction logic
-Radar chart comparison against high-popularity benchmarks
-Numerical feature comparison tables with gap analysis
-Tailored optimization recommendations based on popular song statistics
+1.Real-time popularity prediction based on audio features
+2.SHAP-based feature attribution explaining prediction logic
+3.Radar chart comparison against high-popularity benchmarks
+4.Numerical feature comparison tables with gap analysis
+5.Tailored optimization recommendations based on popular song statistics
 
 
 Files Description
+
+
 Application Files
 
-
 File	Description
-app.py	Main Streamlit application with 4 interactive modules
-music_popularity_rf.pkl	Pre-trained Random Forest regression model
-feature_columns.pkl	Feature list used for prediction
-test.pkl	Test data containing actual and predicted values
+app.py	                 Main Streamlit application with 4 interactive modules
+music_popularity_rf.pkl	 Pre-trained Random Forest regression model
+feature_columns.pkl	     Feature list used for prediction
+test.pkl	               Test data containing actual and predicted values
+
 Data File (Required to Download)
-
-
 File	Description	Source
-Spotify-2000.csv	Spotify Top 2000s Mega Dataset with 1,994 songs and 15 features	Download from Kaggle
+Spotify-2000.csv	Spotify Top 2000s Mega Dataset with 1,994 songs and 15 features	
+                  https://www.kaggle.com/datasets/iamsumat/spotify-top-2000s-mega-dataset/data
+
 Supporting Files
 
-
-File	Description
-requirements.txt	Python dependencies list
-README.md	This documentation file
+File	                Description
+requirements.txt	    Python dependencies list
+README.md	            This documentation file
 Reflection_Report.pdf	Project reflection report
 
 
@@ -58,7 +57,7 @@ music-popularity-prediction/
 ├── music_popularity_rf.pkl        # Trained model
 ├── feature_columns.pkl            # Feature list
 ├── test.pkl                       # Test data
-├── Spotify-2000.csv               # Dataset (download from Kaggle)
+├── Spotify-2000.csv               # Dataset (download from Kaggle https://www.kaggle.com/datasets/iamsumat/spotify-top-2000s-mega-dataset/data)
 │
 ├── requirements.txt               # Dependencies
 ├── README.md                      # Documentation
@@ -70,13 +69,12 @@ Note: All files must be placed in the same directory. The application automatica
 
 
 Requirements
+
+
 Python Version
-
-
 Python 3.8 or higher
+
 Dependencies
-
-
 txt
 streamlit>=1.0.0
 pandas>=1.3.0
@@ -90,10 +88,10 @@ seaborn>=0.11.0
 matplotlib>=3.4.0
 
 
-
 Installation & Setup
-Step 1: Clone Repository
 
+
+Step 1: Clone Repository
 
 bash
 git clone [repository-url]
@@ -101,31 +99,26 @@ cd music-popularity-prediction
 
 Step 2: Download Dataset
 
-
 Visit Kaggle - Spotify Top 2000s Mega Dataset
 Download the dataset CSV file
 Rename it to Spotify-2000.csv
 Place it in the same directory as app.py
-Step 3: Install Dependencies
 
+Step 3: Install Dependencies
 
 bash
 pip install -r requirements.txt
 
-
-
 Or install manually:
-
 
 bash
 pip install streamlit pandas numpy scikit-learn joblib shap nltk plotly seaborn matplotlib
 
 
-
 Running the Application
+
+
 Quick Start
-
-
 bash
 # Navigate to the project directory (where app.py is located)
 cd [project-directory]
@@ -133,12 +126,11 @@ cd [project-directory]
 # Run Streamlit application
 streamlit run app.py
 
+
 Access the Application
 
 
 After running the command, open your browser and visit:
-
-
 plaintext
 http://localhost:8501
 
