@@ -96,7 +96,7 @@ This project develops a Random Forest regression model to predict song popularit
 
 ## Quick Start for Instructors
 
-Follow these steps to run the application locally after cloning the repository.
+Follow these steps to run the application locally after cloning the repository.(Recommended running on Powershell)
 
 ### Step 1: Clone the Repository
 
