@@ -1,294 +1,304 @@
-# songs-popularity-predictor
+# Music Popularity Prediction Assistant
 
-Music Popularity Prediction Assistant
+A data-driven tool that predicts song popularity based on audio features using machine learning, designed for independent music producers, A&R departments, and music marketing teams.
 
+## Features
 
-A machine learning-based tool that predicts song popularity using audio features and provides actionable optimization suggestions for music creators.
-Demo
+- **Data Model Performance Evaluation** - View R², MAE, RMSE metrics and prediction scatter plot
+- **Feature Driver Factor Analysis** - Understand which audio features drive popularity predictions with tier analysis
+- **Popularity Simulation Prediction** - Input your song features via sliders and get instant predictions with optimization suggestions
+- **Feature Distribution Exploration** - Visualize relationships between different audio features with hexbin plots
 
+## Tech Stack
 
+- Python 3.9+
+- pandas 2.3.3 - Data manipulation
+- numpy 1.26.4 - Numerical computing
+- scikit-learn 1.3.2 - Machine learning (Random Forest)
+- matplotlib 3.10.8 - Visualization
+- seaborn - Statistical visualization
+- Streamlit 1.53.0 - Web application
+- SHAP 0.49.1 - Model interpretation
+- NLTK 3.8.1 - Sentiment analysis
 
+## Quick Start for Instructors
 
+Follow these steps to run the application locally after cloning the repository.
 
+### Step 1: Clone the Repository
 
+Open your terminal or command prompt and run:
 
+```bash
+git clone https://github.com/IFalexa/songs-popularity-predictor.git
+cd songs-popularity-predictor
+```
 
+Alternatively, download the ZIP file from GitHub by clicking "Code" → "Download ZIP".
 
+### Step 2: Verify Python Version
 
+This project requires Python 3.9 or higher. Check your Python version:
 
+```bash
+python --version
+```
 
-Project Overview
+If you have multiple Python versions, use:
 
+```bash
+python3 --version
+```
 
-This project develops a Random Forest regression model to predict song popularity scores based on audio features from Spotify's Top 2000s dataset. The trained model is deployed as a Streamlit application with real-time prediction and benchmarking capabilities.
+If Python is not installed, download it from https://www.python.org/downloads/
 
+### Step 3: Create Virtual Environment (Recommended)
 
-Target Users: Independent music producers, A&R departments, music marketing teams
+Creating a virtual environment avoids dependency conflicts:
 
+```bash
+# Create virtual environment
+python -m venv venv
 
-Core Features:
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
 
+# On macOS/Linux:
+source venv/bin/activate
+```
 
-Popularity prediction based on audio features
-Optimization suggestions with benchmark gaps
-Feature comparison via radar charts
-Dataset
+You should see `(venv)` in your terminal prompt after activation.
 
+### Step 4: Install Dependencies
 
-Source: Spotify Top 2000s Mega Dataset
+Install all required packages:
 
+```bash
+pip install -r requirements.txt
+```
 
-Records: 1,994 songs
+This will install all dependencies including:
+- streamlit==1.53.0
+- pandas==2.3.3
+- numpy==1.26.4
+- scikit-learn==1.3.2
+- matplotlib==3.10.8
+- seaborn
+- shap==0.49.1
+- nltk==3.8.1
+- joblib==1.5.3
+- plotly
+- And other supporting libraries
 
+### Step 5: Run the Application
 
-Features: 15 columns including:
+Start the Streamlit application:
 
-
-Audio features: BPM, Energy, Danceability, Loudness, Valence, Acousticness, Speechiness, Liveness
-Metadata: Year, Genre, Artist, Title
-Target: Popularity (0-100 scale)
-Methodology
-Tech Stack
-
-
-Python 3.x
-scikit-learn (Random Forest Regression)
-pandas, numpy
-matplotlib, seaborn
-Streamlit
-SHAP
-Data Processing Pipeline
-
-
-Data Cleaning: Handle missing values, duplicates, outliers
-Feature Engineering: Artist encoding, Genre grouping, Title length extraction
-Train/Test Split: 80/20 ratio
-Model Training: Random Forest with optimized hyperparameters
-Evaluation: R², MAE, RMSE metrics
-Why Random Forest?
-
-
-Captures non-linear relationships in audio features
-Resistant to overfitting compared to single decision trees
-Provides interpretable feature importance scores
-Outperformed simpler models (Linear Regression, Decision Tree) in cross-validation
-Model Performance
-
-
-R² Score: 0.325
-
-
-MAE: 9.74
-
-
-RMSE: 12.04
-
-
-Interpretation: The model explains 32.5% of popularity variance, with predictions averaging ±10 points error. RMSE > MAE indicates presence of prediction outliers - some songs with average features became viral hits, while others with strong features underperformed.
-Feature Importance (Top 10)
-
-
-Year (11.8%) - Temporal trends and streaming era effects
-Length/Duration (9.0%) - Shorter songs preferred in streaming era
-Genre: Dutch Indie (8.5%) - Regional bias indicator
-Danceability (7.5%) - Rhythm and groove importance
-Liveness (7.5%) - Live performance presence
-Loudness (7.4%) - Production quality indicator
-BPM (7.1%) - Tempo impact
-Valence (6.6%) - Emotional positivity
-Title Length (6.6%) - Memorability factor
-Energy (6.2%) - Song energy level
-
-
-Key Insights:
-
-
-Release year is the strongest predictor (11.8% importance)
-Genre plays significant role, especially niche genres
-Audio features (Danceability, Loudness, BPM) collectively drive popularity
-Duration optimization: shorter songs preferred in streaming era
-Streamlit Application
-
-
-The application consists of 4 interactive modules:
-1. Model Performance Dashboard
-
-
-Display R², MAE, RMSE metrics
-Model evaluation visualizations
-Performance comparison charts
-2. Feature Driver Analysis
-
-
-Feature importance ranking
-SHAP analysis for interpretability
-Detailed explanation of how each feature impacts predictions
-3. Popularity Prediction
-
-
-Input audio features via sliders (BPM, Energy, Danceability, etc.)
-Get instant popularity score prediction
-Compare with top songs benchmark
-Receive optimization suggestions
-4. Feature Distribution
-
-
-Visualize feature distributions across popularity levels
-Identify optimal feature ranges for high popularity
-Benchmark your song against successful tracks
-Quick Start
-Prerequisites
-
-
-bash
-pip install streamlit pandas numpy scikit-learn matplotlib seaborn shap
-
-Run Application
-
-
-bash
+```bash
 streamlit run app.py
+```
 
-Use Pre-trained Model
+The application will automatically open in your default browser at http://localhost:8501
 
+If the browser doesn't open automatically, manually navigate to the URL shown in the terminal.
 
-The repository includes a pre-trained Random Forest model (music_popularity_rf.pkl) that can be loaded directly:
+## Troubleshooting & Common Issues
 
+### Issue 1: "streamlit: command not found"
 
-python
-import pickle
-with open('music_popularity_rf.pkl', 'rb') as f:
-    model = pickle.load(f)
+**Solution:** Install Streamlit globally or use the full path:
 
-Model Details
+```bash
+python -m streamlit run app.py
+```
 
+### Issue 2: ModuleNotFoundError for specific packages
 
-Algorithm: Random Forest Regressor
+**Solution:** Install the missing package individually:
 
+```bash
+pip install streamlit
+pip install pandas
+pip install scikit-learn
+pip install shap
+pip install nltk
+```
 
-Hyperparameters:
+### Issue 3: SHAP import error on Windows
 
+**Solution:** SHAP requires Visual C++ Build Tools. Install it from:
+https://visualstudio.microsoft.com/visual-cpp-build-tools/
 
-n_estimators: 350
-max_depth: 14
-min_samples_leaf: 2
-max_features: None
-random_state: 42
+Or use a pre-compiled version:
 
+```bash
+pip install shap --no-binary shap
+```
 
-Training Data: 1,595 songs (80%)
+### Issue 4: Python version compatibility
 
+**Minimum Required:** Python 3.9
 
-Test Data: 399 songs (20%)
-Limitations
+If you encounter compatibility issues with newer Python versions (3.11+), try:
 
+```bash
+pip install --upgrade pip setuptools wheel
+pip install -r requirements.txt
+```
 
-Data Limitations:
+### Issue 5: Permission denied when saving model files
 
+**Solution:** Close any programs that might be using the .pkl files, or save with a different filename:
 
-Limited to songs from 1956-2019
-Missing contemporary features (streams, playlists, social media metrics)
-Genre distribution skewed towards certain categories
-Does not include lyrics or music video features
+```python
+joblib.dump(model, 'model_new.pkl', compress=3)
+```
 
+### Issue 6: NLTK data not found
 
-Model Limitations:
+**Solution:** Download required NLTK data:
 
+```python
+import nltk
+nltk.download('vader_lexicon')
+```
 
-R² of 0.325 indicates significant unexplained variance
-Cannot capture viral/meme-driven popularity
-Regional popularity differences not considered
-Artist reputation and marketing budget not factored
-Future Improvements
+### Issue 7: Virtual environment activation fails on Windows
 
+**Solution:** Enable PowerShell script execution:
 
-Short-term:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 
+Then try activating again:
 
-Add more recent songs (2020-2024)
-Include streaming platform features (playlists, skip rates)
-Experiment with ensemble models (XGBoost, LightGBM)
-Add cross-validation for more robust evaluation
+```bash
+venv\Scripts\activate
+```
 
+### Issue 8: Plotly visualization not rendering
 
-Long-term:
+**Solution:** Ensure plotly is installed:
 
+```bash
+pip install plotly
+```
 
-Deploy as web service API
-Add real-time Spotify integration
-Incorporate lyrical analysis (NLP)
-Include artist popularity and social media metrics
-Build recommendation engine based on similarity
-Project Structure
+## Project Structure
 
+- `app.py` - Main Streamlit application with 4 interactive modules
+- `train_model.py` - Model training script
+- `Music Popularity Prediction.ipynb` - Complete Jupyter Notebook with data analysis workflow
+- `music_popularity_rf.pkl` - Trained Random Forest model
+- `feature_columns.pkl` - Feature column names used in training
+- `test.pkl` - Test data for model evaluation
+- `Spotify-2000.csv` - Dataset from Kaggle (1,994 songs with 15 features)
+- `requirements.txt` - Python dependencies with versions
+- `README.md` - This documentation file
 
-plaintext
-music-popularity-prediction/
-├── app.py
-├── music_popularity_rf.pkl
-├── songs-popularity-prediction.ipynb
-├── README.md
-├── demo_1.png
-├── demo_2.png
-├── demo_3.png
-├── demo_4.png
-├── demo_5.png
-└── demo_6.png
+## Model Performance
 
+- R² Score: 0.325 (explains 32.5% of variance in popularity)
+- Mean Absolute Error (MAE): 9.73 (predictions within ~10 popularity points on average)
+- Root Mean Square Error (RMSE): 12.04
 
+Top 3 Feature Importance:
+- Release Year: 11.8% (era characteristics)
+- Song Duration: 9.0% (streaming-era preference for shorter songs)
+- Dutch Indie Genre: 8.5% (regional market patterns)
 
-File Descriptions:
+## Dataset Information
 
+The project uses the Spotify Top 2000s Mega Dataset from Kaggle, containing:
+- 1,994 songs
+- 15 features including:
+  - Audio characteristics: BPM, Energy, Danceability, Loudness, Valence, Acousticness, Speechiness, Liveness, Duration
+  - Metadata: Year, Artist, Genre, Title
+- Time range: 1956-2019
+- Target variable: Popularity score (11-100)
 
-app.py - Streamlit application with 4 interactive modules
-music_popularity_rf.pkl - Pre-trained Random Forest model
-songs-popularity-prediction.ipynb - Complete Jupyter notebook with data analysis and model training
-README.md - Project documentation (this file)
-demo_1.png - Model Performance Dashboard screenshot
-demo_2.png - Feature Importance visualization
-demo_3.png - SHAP Analysis visualization
-demo_4.png - Radar Chart for feature comparison
-demo_5.png - Comparison Table with benchmark
-demo_6.png - Feature Distribution analysis
-Ethical Considerations
+Dataset source: https://www.kaggle.com/datasets/iamsumat/spotify-top-2000s-mega-dataset
 
+## Application Modules
 
-Model predictions should guide, not dictate creative decisions
-Popularity metrics do not equal artistic quality
-Genre bias exists in training data
-Transparency in model limitations communicated to users
-Avoid over-reliance on algorithmic predictions for artistic choices
-AI Disclosure
+### 1. Data Model Performance Evaluation
+- View R², MAE, RMSE metrics with status indicators
+- Actual vs. Predicted scatter plot with diagonal reference line
+- Deep analysis conclusions on model performance
 
+### 2. Feature Driver Factor Analysis
+- Global influence weight bar chart of all features
+- Three-tier feature categorization:
+  - First Tier: Era Characteristics (Year)
+  - Second Tier: Rhythm Dynamics (Danceability, Loudness, BPM, Valence)
+  - Third Tier: Market Labels (Genre patterns)
 
-This project utilized AI tools (Claude, ChatGPT) for:
+### 3. Popularity Simulation Prediction
+- Interactive parameter configuration with sliders
+- Song name, duration, genre selection
+- Audio feature adjustments (Danceability, Energy, Valence, etc.)
+- Real-time popularity prediction with status indicator
+- Optimization suggestions based on high-popularity benchmarks
+- SHAP Force Plot for feature attribution
+- Radar chart comparison with high-popularity songs
+- Detailed feature value comparison table
 
+### 4. Feature Distribution Exploration
+- Hexbin plots for feature relationship visualization
+- Interactive X-axis and Y-axis selection
+- Correlation coefficient display
+- Distribution histograms for both axes
 
-Code debugging and optimization
-Documentation writing assistance
-Exploratory data analysis support
+## Running the Jupyter Notebook
 
+To explore the data analysis process:
 
-All modeling decisions, interpretations, and final code were reviewed and approved by the human author.
-Requirements
+```bash
+jupyter notebook "Music Popularity Prediction.ipynb"
+```
 
+Or if using JupyterLab:
 
-plaintext
-streamlit>=1.20.0
-pandas>=1.3.0
-numpy>=1.21.0
-scikit-learn>=1.0.0
-matplotlib>=3.4.0
-seaborn>=0.11.0
-shap>=0.41.0
+```bash
+jupyter lab "Music Popularity Prediction.ipynb"
+```
 
-License
+The notebook contains:
+- Problem Definition & Business Context
+- Data Overview & Cleaning
+- Exploratory Data Analysis (EDA)
+- Feature Engineering
+- Model Building with GridSearchCV
+- Model Evaluation & Feature Importance Analysis
+- Business Insights & Product Design
+- Limitations & Future Work
 
+## System Requirements
 
-This project is for educational purposes as part of ACC102 coursework.
+- Operating System: Windows 10+, macOS 10.14+, or Linux
+- Python: 3.9 or higher (tested on Python 3.9)
+- RAM: 4GB minimum (8GB recommended)
+- Disk Space: 500MB for dependencies
 
+## Additional Resources
 
-Questions or Feedback: Please open an issue in this repository.
+- Streamlit Documentation: https://docs.streamlit.io/
+- scikit-learn Documentation: https://scikit-learn.org/stable/
+- SHAP Documentation: https://shap.readthedocs.io/
+- Dataset Source: https://www.kaggle.com/datasets/iamsumat/spotify-top-2000s-mega-dataset
 
+## Author
 
+Created for ACC102 Mini Assignment
 
+## License
+
+This project is for educational purposes only.
+
+## Acknowledgments
+
+- Dataset source: Kaggle Spotify Top 2000s Mega Dataset
+- Model: Random Forest Regression with GridSearchCV hyperparameter tuning
+- Visualization: Streamlit, matplotlib, seaborn, SHAP, plotly
