@@ -244,7 +244,7 @@ if st.session_state["menu"] == "Metrics":
             <b>1. Overall Explanatory Power Evaluation</b><br>
             The R² of the random forest regression model is 0.325, indicating that the model has captured 32.5% of the fluctuation logic in the dataset. It has initially established a prediction benchmark for popularity trends despite the highly complex and subjective market context.<br><br>
             <b>2. Error Trend Interpretation</b><br>
-            MAE (9.74) shows good performance, but RMSE (12.24) is relatively high, revealing a "black swan effect" in the dataset — that is, some songs, although average in inherent features, achieved extremely high popularity due to external factors, leading to biased predictions.
+            MAE (9.74) shows good performance, but RMSE (12.04) is relatively high, revealing a "black swan effect" in the dataset — that is, some songs, although average in inherent features, achieved extremely high popularity due to external factors, leading to biased predictions.
         </div>
         """, unsafe_allow_html=True)
 
