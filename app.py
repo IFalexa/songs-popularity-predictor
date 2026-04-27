@@ -137,8 +137,8 @@ def load_assets():
     base_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Splice into complete path (Key: variables here will be used later!)
-    model_path    = os.path.join(base_dir, "music_popularity_rf.pkl")
-    feature_path  = os.path.join(base_dir, "feature_columns.pkl")
+    model_path    = os.path.join(base_dir, "music_popularity_rf(1).pkl")
+    feature_path  = os.path.join(base_dir, "feature_columns(1).pkl")
     test_path     = os.path.join(base_dir, "test.pkl")
     csv_path      = os.path.join(base_dir, "Spotify-2000.csv")
 
